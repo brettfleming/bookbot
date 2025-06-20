@@ -1,6 +1,7 @@
 from stats import num_words
 from stats import get_character_count
 from stats import sort_characters
+import sys
 
 def get_book_text(book):
     with open(book) as f:
@@ -23,4 +24,8 @@ def main(book):
     print_only_alpha(sorted_characters)
     print("============= END ===============")
 
-main("books/frankenstein.txt")
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>", file=sys.stderr)
+    sys.exit(1)
+
+main(sys.argv[1])
